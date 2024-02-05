@@ -2,15 +2,14 @@ package com.nolan.buildmypc;
 
 public class PC {
 
-    private PCCase pCCase; // I dont like having the abbreviation com.nolan.buildmypc.PC camel case like this, but I was told this is the proper way
+    private PCCase pCCase;
     private Monitor monitor;
     private Motherboard motherboard;
 
-    public PC(Case pCCase, Monitor monitor, Motherboard motherboard){
+    public PC(PCCase pCCase, Monitor monitor, Motherboard motherboard){
         this.pCCase = pCCase;
         this.monitor = monitor;
         this.motherboard = motherboard;
-
     }
 
     public PCCase getCase(){
@@ -23,5 +22,28 @@ public class PC {
 
     public Motherboard getMotherboard() {
         return motherboard;
+    }
+
+    @Override
+    public String toString(){
+        return "~~~~~~~~PC Info~~~~~~~~\n"
+            + "PC Case: " + pCCase.toString()
+            + "Monitor: " + pCCase.toString()
+            + "Motherboard: " + pCCase.toString()
+            + "PC Status: " + getStatus();
+    }
+
+    private String getStatus(){
+        String status;
+
+        if(this.getMotherboard().isBooting()){
+            status = "Booting...";
+        }else if(this.getMotherboard().hasErrors()){
+            status = "Failed to boot";
+        }else{
+            status = "Operational";
+        }
+
+        return status;
     }
 }

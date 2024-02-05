@@ -1,9 +1,5 @@
 package com.nolan.buildmypc;
 
-/*
-
- */
-
 public class PCCase {
 
     private String model;
