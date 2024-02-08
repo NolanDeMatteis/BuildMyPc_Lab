@@ -9,6 +9,12 @@ public class Motherboard {
     private String model, formFactor, processorSocket, operatingSystem;
     private int pCIESlot, memorySlots, maxMemory;
 
+
+    @Override
+    public String toString() {
+        return "model: " + model + "\nform factor: " + formFactor + "\nproccessor socket: " + processorSocket + "\noperating system: " + operatingSystem + "\nPCIE slots: " + pCIESlot + "\nmemory slots: " + memorySlots + "\nmax memory: " + maxMemory;
+    }
+
     public Motherboard(String model, String formFactor, String processorSocket, String operatingSystem, int pCIESlot, int memorySlots, int maxMemory){
         this.model = model;
         this.formFactor = formFactor;
@@ -24,7 +30,7 @@ public class Motherboard {
 
         poweredOn = true;
 
-        if(rand.nextInt(5) == 1){ // 1 in 5 chance to have an error
+        if(rand.nextInt(3) == 1){ // 1 in 3 chance to have an error
             hasErrors = true;
         }
 
@@ -38,19 +44,20 @@ public class Motherboard {
 
         // completion/fail
         isBooting = false;
+        System.out.println("\nBooting complete!");
 
     }
 
     private void fakeLoadingMessage() throws InterruptedException {
-        int delayCycles = new Random().nextInt(5);
+        int delayCycles = 3 + new Random().nextInt(7);
 
         System.out.print("Booting");
         for(int i = 0; i < delayCycles; i++){
             System.out.print(".");
-            Thread.sleep(500);
+            Thread.sleep(1000);
         }
-
     }
+
 
     public int getMaxMemory() {
         return maxMemory;

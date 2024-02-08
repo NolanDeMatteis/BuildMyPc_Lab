@@ -6,13 +6,13 @@ public class PC {
     private Monitor monitor;
     private Motherboard motherboard;
 
-    public PC(PCCase pCCase, Monitor monitor, Motherboard motherboard){
+    public PC(PCCase pCCase, Monitor monitor, Motherboard motherboard) {
         this.pCCase = pCCase;
         this.monitor = monitor;
         this.motherboard = motherboard;
     }
 
-    public PCCase getCase(){
+    public PCCase getCase() {
         return pCCase;
     }
 
@@ -25,22 +25,24 @@ public class PC {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "~~~~~~~~PC Info~~~~~~~~\n"
-            + "PC Case: " + pCCase.toString()
-            + "Monitor: " + pCCase.toString()
-            + "Motherboard: " + pCCase.toString()
-            + "PC Status: " + getStatus();
+                + "------Case Info------ \n" + pCCase.toString()
+                + "\n======Monitor Info=======\n" + monitor.toString()
+                + "\n******Motherboard Info*******\n" + motherboard.toString()
+                + "\n________PC STATUS________\n" + getStatus();
     }
 
-    private String getStatus(){
+    String getStatus() {
         String status;
 
-        if(this.getMotherboard().isBooting()){
+        if (this.getMotherboard().isBooting()) {
             status = "Booting...";
-        }else if(this.getMotherboard().hasErrors()){
+        } else if (this.getMotherboard().hasErrors()) {
             status = "Failed to boot";
-        }else{
+        } else if (!this.getMotherboard().isPoweredOn()){
+            status = "Offline";
+        }else {
             status = "Operational";
         }
 

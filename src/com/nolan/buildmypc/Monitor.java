@@ -15,4 +15,9 @@ public class Monitor {
         this.refreshRate = refreshRate;
     }
 
+
+    @Override
+    public String toString() {
+        return "Manufacturer: " + manufacturer + "\nmodel: " + model + "\nresolution: " + resolution.getHeight() + " x " + resolution.getWidth() + "\nscreen size: " + screenSize + "in\nrefresh rate: " +refreshRate;
+    }
 }
